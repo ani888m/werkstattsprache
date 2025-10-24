@@ -1,0 +1,235 @@
+ * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #5372ef;
+    overflow-x: hidden;
+
+}
+.container {
+  width: 90%;
+  max-width: 37.5em;
+  background-color: #ffffff;
+  padding: 3em 0.5em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 0.8em;
+}
+h3 {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto 2em auto;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.8em;
+  color: #010c39;
+}
+.draggable-objects,
+.drop-points {
+  display: flex;
+  justify-content: space-around;
+  padding: 2em;
+}
+.draggable-image {
+  width: 8em;
+  cursor: move;
+}
+img {
+  width: 8em;
+  filter: drop-shadow(0 0.3em 0.9em rgba(0, 0, 0, 0.25));
+}
+.countries {
+  width: 10em;
+  height: 8em;
+  display: grid;
+  place-items: center;
+  border: 0.25em dashed #010c39;
+  border-radius: 0.8em;
+}
+.dropped {
+  padding: 0;
+  background-color: #e5ffc8;
+}
+.controls-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #5372ef;
+  flex-direction: column;
+  top: 0;
+}
+.controls-container button {
+  font-size: 1.12em;
+  padding: 0.8em 1em;
+  border-radius: 0.2em;
+  border: none;
+  outline: none;
+  color: #010c39;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.controls-container p {
+  color: #ffffff;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.hide {
+  display: none;
+}
+/* MOBILE LAYOUT bis 768px (Tablets & kleinere Geräte) */
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 95%;
+    max-width: 480px;
+    padding: 2em 1.5em;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 2em auto;
+    border-radius: 1em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    line-height: 1.4em;
+    margin-bottom: 1.5em;
+    padding: 0 1em;
+    text-align: center;
+  }
+
+  .draggable-objects,
+  .drop-points {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    padding: 1em 0;
+  }
+
+  .draggable-image,
+  .countries {
+    width: 90%;
+    max-width: 320px;
+    min-height: 6em;
+    height: auto;
+  }
+
+  .draggable-image img,
+  .countries img {
+    width: 100%;
+    height: auto;
+  }
+
+  .countries {
+    font-size: 1em;
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 0.2em;
+  }
+
+  .controls-container {
+    padding: 2em 1em;
+  }
+
+  .controls-container p {
+    font-size: 1.4em;
+    padding: 0 1em;
+    text-align: center;
+  }
+
+  .controls-container button {
+    font-size: 1.1em;
+    padding: 0.8em 1.2em;
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* EXTRA KLEIN bis 400px (kleine Smartphones) */
+@media screen and (max-width: 400px) {
+  .container {
+    width: 95%;
+    padding: 1.5em 1em;
+    margin: 1.5em auto;
+    border-radius: 0.8em;
+  }
+
+  h3 {
+    font-size: 1em;
+    line-height: 1.3em;
+    margin-bottom: 1em;
+    padding: 0 1em;
+  }
+
+  .draggable-objects,
+  .drop-points {
+    gap: 1em;
+    padding: 0.5em 0;
+  }
+
+  .draggable-image,
+  .countries {
+    width: 100%;
+    min-height: 5em;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .countries {
+    font-size: 0.9em;
+    padding: 0.8em;
+  }
+
+  .controls-container p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    padding: 0 1em;
+  }
+
+  .controls-container button {
+    font-size: 1em;
+    padding: 0.7em 1em;
+    width: 100%;
+  }
+}
+
+/* Für Bildschirme bis 768px */
+@media screen and (max-width: 768px) {
+  .draggable-image img,
+  .countries img {
+    width: 50%;      /* Noch kleiner */
+    max-width: 120px;
+    height: auto;
+  }
+}
+
+/* Für sehr kleine Bildschirme bis 400px */
+@media screen and (max-width: 400px) {
+  .draggable-image img,
+  .countries img {
+    width: 40%;      /* Noch kleiner */
+    max-width: 40px;
+    height: auto;
+  }
+}
