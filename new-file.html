@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hängemann Spiel mit Fragen</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background:#f5f5f5; }
+    h1 { color:#333; }
+    #frage { font-size: 1.2em; margin: 15px; color:#444; }
+    #word { font-size: 2em; letter-spacing: 0.2em; margin: 20px; }
+    #keyboard button { margin: 2px; padding:10px; font-size:1em; }
+    #status { margin:20px; font-size:1.2em; }
+    canvas { background:#fff; border:1px solid #ccc; margin:20px auto; display:block; }
+  </style>
+</head>
+<body>
+  <h1>Hängemann</h1>
+  <canvas id="hangman" width="200" height="200"></canvas>
+  <div id="frage"></div>
+  <div id="word"></div>
+  <div id="keyboard"></div>
+  <div id="status"></div>
+  <button onclick="newGame()">Neue Frage</button>
+
+  <script>
+    const qa = [
+      {frage: "Programmiersprache für Webbrowser", antwort: "JAVASCRIPT"},
+      {frage: "Gerät zum Rechnen und Arbeiten", antwort: "COMPUTER"},
+      {frage: "Ort zum Lernen", antwort: "SCHULE"},
+      {frage: "Eine Tätigkeit: ... zu schreiben", antwort: "PROGRAMMIEREN"},
+      {frage: "Figur im klassischen Spiel", antwort: "HÄNGER"}
+    ];
+
+    let current = null;
+    let secret = "";
+    let guessed = [];
+    let wrong = 0;
+    const maxWrong = 6;
+
+    function newGame(){
+      current = qa[Math.floor(Math.random()*qa.length)];
+      secret = current.antwort;
+      guessed = [];
+      wrong = 0;
+      document.getElementById('status').textContent="";
+      document.getElementById('frage').textContent = current.frage;
+      buildKeyboard();
+      draw();
+      updateWord();
+    }
+
+    function buildKeyboard(){
+      const container = document.getElementById('keyboard');
+      container.innerHTML = '';
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ";
+      for(let ch of alphabet){
+        const btn = document.createElement('button');
+        btn.textContent = ch;
+        btn.disabled = guessed.includes(ch);
+        btn.onclick = ()=> guess(ch);
+        container.appendChild(btn);
+      }
+    }
+
+    function updateWord(){
+      let display = '';
+      for(let ch of secret){
+        if(ch===' '){ display+=' '; }
+        else if(guessed.includes(ch)){ display+=ch; }
+        else{ display+='_'; }
+        display+=' ';
+      }
+      document.getElementById('word').textContent = display;
+    }
+
+    function guess(ch){
+      if(guessed.includes(ch)) return;
+      guessed.push(ch);
+      if(!secret.includes(ch)){
+        wrong++;
+        draw();
+      }
+      updateWord();
+      checkGame();
+      buildKeyboard();
+    }
+
+    function checkGame(){
+      if(wrong>=maxWrong){
+        document.getElementById('status').textContent = "Verloren! Die Antwort war: "+secret;
+        disableAll();
+      } else if(secret.split('').every(ch=> ch===' ' || guessed.includes(ch))){
+        document.getElementById('status').textContent = "Gewonnen!";
+        disableAll();
+      }
+    }
+
+    function disableAll(){
+      document.querySelectorAll('#keyboard button').forEach(b=> b.disabled=true);
+    }
+
+    function draw(){
+      const ctx = document.getElementById('hangman').getContext('2d');
+      ctx.clearRect(0,0,200,200);
+      ctx.lineWidth=2;
+      // Galgen
+      ctx.beginPath();
+      ctx.moveTo(10,190); ctx.lineTo(150,190);
+      ctx.moveTo(40,190); ctx.lineTo(40,20);
+      ctx.lineTo(120,20); ctx.lineTo(120,40);
+      ctx.stroke();
+      if(wrong>0){ // Kopf
+        ctx.beginPath(); ctx.arc(120,55,15,0,Math.PI*2); ctx.stroke();
+      }
+      if(wrong>1){ // Körper
+        ctx.beginPath(); ctx.moveTo(120,70); ctx.lineTo(120,120); ctx.stroke();
+      }
+      if(wrong>2){ // linker Arm
+        ctx.beginPath(); ctx.moveTo(120,80); ctx.lineTo(100,100); ctx.stroke();
+      }
+      if(wrong>3){ // rechter Arm
+        ctx.beginPath(); ctx.moveTo(120,80); ctx.lineTo(140,100); ctx.stroke();
+      }
+      if(wrong>4){ // linkes Bein
+        ctx.beginPath(); ctx.moveTo(120,120); ctx.lineTo(100,150); ctx.stroke();
+      }
+      if(wrong>5){ // rechtes Bein
+        ctx.beginPath(); ctx.moveTo(120,120); ctx.lineTo(140,150); ctx.stroke();
+      }
+    }
+
+    newGame();
+  </script>
+</body>
+</html>
+
