@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Business website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+      <div class="navigation  w3-container" >
+        <nav class="nav-container w3-padding-large">
+          <div class="logo">
+            <a href="#home" >Werkstatt<span>SPRACHE</span></a>
+          </div>
+          <div class="mobile-button">
+            <span style="float: right;" onclick="toggleMobileNavigation()">&#9776;</span>
+          </div>
+          <div class="links">
+            <a href="#about" >Über uns </a>
+            <a href="#services" >Angebote</a>
+            <a href="#contact" >Kontakt</a>            
+          </div>
+          <div id="mobile-sidenav" class="mobile-links w3-highway-blue">
+            <div class="mobile-logo" style="display: inline;">
+              <a href="#home" class="logo">Werkstatt<span>SPRACHE</span></a>
+              <span style="width: 100%;"></span>
+              <a href="javascript:void(0)" class="closebtn" onclick="toggleMobileNavigation()">&times;</a>
+            </div>
+            <a href="#about" onclick="toggleMobileNavigation()">Über uns</a>
+            <a href="#services" onclick="toggleMobileNavigation()">Angebote</a>
+            <a href="#contact" onclick="toggleMobileNavigation()">Kontakt</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero" id="home">
+        <div class="text container">
+          <h1 class="title"> Werkstatt<span>SPRACHE</span></h1>
+      
+          <a class="w3-button w3-metro-blue w3-round-large  w3-hover-blue" href="#about">MEHR ERFAHREN</a> 
+        </div>
+      </div>
+
+     
+
+      <div class="w3-panel  numbers" id="about" style="padding: 180px 80px;  ">
+        <h2 class="w3-center w3-xxxlarge" >ÜBER UNS</h2>
+          <p class="text-ueberuns">
+         
+In vielen Betrieben und Unternehmen steht die Herausforderung im Raum, 
+Mitarbeitende sprachlich zu fördern, um ihre fachlichen Fähigkeiten weiter auszubauen 
+und die Kommunikation zu verbessern. In diesem Zusammenhang fungiert Integriertes Fach- und Sprachlernen als Vermittler
+zwischen Sprachlernangeboten und Betrieben. 
+Ziel ist es, maßgeschneiderte Lösungen anzubieten, die sowohl die sprachliche 
+als auch die fachliche Weiterentwicklung von Beschäftigten fördern.
+ Hierzu werden praxisorientierte Workshops durchgeführt und individuelle Lernmaterialien, sowie digitalisierte Aufgaben und Sprachlernspiele entwickelt, 
+ die auf die Bedürfnisse von Mitarbeitenden zugeschnitten sind. Unser Angebot ist kostenlos,
+  da wir im Auftrag der Senatsverwaltung tätig sind und aus  Mitteln des Landes Berlin  finanziert werden.</p>
+</p>
+ <a class="w3-button w3-round-large w3-indigo w3-hover-blue" href="#services" style="max-width: 200px ; margin: 0 auto; ">zum Angebot</a> 
+       <!-- <p class="w3-center w3-xxxlarge show-medium">
+          <?xml version="1.0" encoding="utf-8"?>
+          <svg x="0px" y="0px" width="36" fill="#bed9f3" stroke="#bed9f3"
+            viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+          <g id="Down-arrow">
+            <path d="M17.2929993,29.7070007c-0.3906994-0.3906002-0.3906994-1.0234013,0-1.4140015
+              c0.3906002-0.3906002,1.0234013-0.3906002,1.4140015,0L32,41.5858994l13.2929993-13.2929001
+              c0.3905983-0.3906002,1.0233994-0.3906002,1.4140015,0C46.902298,28.4883003,47,28.7441998,47,29
+              c0,0.2558994-0.097702,0.5116997-0.2929993,0.7070007l-14,14c-0.3906021,0.3906975-1.0234013,0.3906975-1.4140015,0
+              L17.2929993,29.7070007z"/>
+            <path d="M32,64c17.6730957,0,32-14.3269005,32-32S49.6730957,0,32,0C14.3268003,0,0,14.3268995,0,32S14.3268003,64,32,64z M32,62
+              C15.4579,62,2,48.542099,2,32C2,15.4580002,15.4579,2,32,2s30,13.4580002,30,30C62,48.542099,48.542099,62,32,62z"/>
+          </svg>
+        </p> -->
+       
+      </div>
+      
+
+      <div class="services container" id="services" style="padding: 180px 0px;"  >
+        <h2 class="w3-center"  >Unsere Arbeit</h2>
+        <div class="cards w3-padding-large w3-margin-top">
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>Workshops</h3>
+            <div class="card-text">
+              <p>Eine kurze Beschreibung:text-text-text-text-text-text-text-text-text-text-text-text-text</p><br>
+              <button class="w3-button w3-round-large w3-indigo w3-hover-blue" onclick="window.location.href='Sprachlernspiele.html'">Beispiele</button>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>Sprachlernspiele</h3>
+            <div class="card-text">
+              <p>Eine kurze Beschreibung: text-text-text-text-textv-text-text-text-text-text-text-text-text-text-text</p><br>
+             <button class="w3-button w3-round-large w3-indigo w3-hover-blue" onclick="window.location.href='Sprachlernspiele.html'">Beispiele</button>
+            </div>
+          </div>
+
+         <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>Noch etwas, was uns einfällt</h3>
+            <div class="card-text">
+              <p>Eine kurze Beschreibung: text-text-text-text-text-text-text-text-text-text-text-text-text-text-text</p><br>
+              <button class="w3-button w3-round-large w3-indigo w3-hover-blue" onclick="window.location.href='Sprachlernspiele.html'">Beispiele</button>
+            </div>
+          </div> <br><br>
+           <a class="w3-button w3-round-large w3-indigo w3-hover-blue" href="#contact">Kontakt aufnehmen</a> 
+           </div>
+      <div class="contact container" id="contact"  style="padding: 200px 0px 0px 0px;">
+        <div class="short-contact">
+          <h2>Kontaktiern Sie uns!</h2>
+
+          <!-- <p class="w3-xlarge">We would like to hear from you,</p>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-location-arrow"></i><span style="margin-left:10px;"><a href="https://www.google.com/maps/place/London,+UK/@51.5287352,-0.3817852,10z/data=!3m1!4b1!4m5!3m4!1s0x47d8a00baf21de75:0x52963a5addd52a99!8m2!3d51.5072178!4d-0.1275862" target="_blank">23th Street, London, England</a></span><br>
+            <i class="fa fa-envelope-o"></i><span style="margin-left:10px;"><a href="connect@factor.com">connect@factor.com</a></span><br>
+            <i class="fa fa-phone"></i><span style="margin-left:10px;"><a href="+44 0197532486">+44 0197532486</a></span><br>
+          </div>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-linkedin"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">- LinkedIn</a></span><br>
+            <i class="fa fa-facebook"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;"> - Facebook</a></span><br>
+            <i class="fa fa-twitter"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">- Twitter</a></span><br>
+          </div>
+        </div>-->
+        <div class="form" >
+          <div class="container">
+            <form class="w3-padding-large w3-round-large" action="https://formcarry.com/s/pK_mKo7nHjw" method="POST" enctype="multipart/form-data">
+              <label for="fname">Name</label>
+              <input type="text" id="name" name="name" placeholder="Ihr Name">
+
+              <label for="lname">E-Mail</label>
+              <input type="text" id="email" name="email" placeholder="Ihre E-Mail">
+
+              <label for="subject">Ihre Nachricht</label>
+              <textarea id="subject" name="subject" placeholder="Schreiben Sie etwas..." style="height:120px"></textarea>
+              
+              <p>Durch das Absenden dieses Formulars erklären Sie sich mit unserer Datenschutzrichtlinie einverstanden<a href="privacy-policy.html" target="_blank">Datenschutzrichtlinie</a></p><br>
+              <input class="w3-metro-blue" type="submit" value="Senden">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class=" 3-highway-blue w3-padding-large" id="footer" >
+        <p lass="w3-center logo">© 2025 Werkstatt<span>SPRACHE</span> - Alle Rechte vorbehalten</p>
+      </div>
+
+  <script>
+    function toggleMobileNavigation() {
+      const mobileNavigation = document.getElementById("mobile-sidenav");
+      mobileNavigation.classList.toggle('mobile-links-active');
+    }
+</script>
+  </body>
+</html>
