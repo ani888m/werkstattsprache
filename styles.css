@@ -292,8 +292,8 @@ about .text-one {
 }
 
 .services .cards .card {
-  max-height: 300px;
-  height: 250px;
+  max-height: 400px;
+  height: 350px;
   overflow: auto;
   width: 30%;
   text-align: center;
