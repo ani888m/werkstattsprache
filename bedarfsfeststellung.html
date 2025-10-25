@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Bedarfsfeststellung – Integriertes Fach- und Sprachlernen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.5;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      gap: 10px;
+    }
+
+    .checkbox-group label input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 20px;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005ea0;
+    }
+
+    .success {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e3f5e3;
+      border-left: 5px solid #2d8a2d;
+    }
+
+    .zusatzfragen {
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Bedarfsfeststellung für digitales Fach- und Sprachlernen</h1>
+  <p>Bitte beantworten Sie die folgenden Fragen, damit wir ein passendes Lernangebot entwickeln können.</p>
+
+  <form id="bedarfForm">
+
+    <label for="unternehmen">Name des Betriebs/Unternehmens</label>
+    <input type="text" id="unternehmen" required>
+
+    <label for="anzahl">Anzahl der Mitarbeitenden, die gefördert werden sollen</label>
+    <input type="number" id="anzahl" min="1" required>
+
+    <label for="sprachniveau">Sprachniveaus der Mitarbeitenden</label>
+    <select id="sprachniveau">
+      <option>A1</option>
+      <option>A2</option>
+      <option>B1</option>
+      <option>B2</option>
+      <option>C1 oder höher</option>
+      <option>gemischt / unklar</option>
+    </select>
+
+    <label>Fachliche Ziele (Mehrfachauswahl möglich)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" value="Fachwortschatz erweitern"> Fachwortschatz erweitern</label>
+      <label><input type="checkbox" value="Abläufe und Prozesse verstehen"> Abläufe und Prozesse verstehen</label>
+      <label><input type="checkbox" value="Arbeitssicherheit"> Arbeitssicherheit und Unterweisungen</label>
+      <label><input type="checkbox" value="Schulungen"> Teilnahme an fachlichen Schulungen</label>
+      <label><input type="checkbox" value="Dokumentation"> Dokumentationen/Berichte verstehen</label>
+      <label><input type="checkbox" value="Kommunikation Vorgesetzte"> Kommunikation mit Vorgesetzten/Kolleginnen</label>
+      <label><input type="checkbox" value="Kundenkontakt"> Kundenkontakt</label>
+      <label><input type="checkbox" value="Digitale Systeme"> Nutzung digitaler Systeme</label>
+      <label><input type="checkbox" value="Qualifizierungen"> Unterstützung bei Prüfungen/Qualifizierungen</label>
+    </div>
+
+    <label>Kommunikative Ziele (Mehrfachauswahl möglich)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" value="Alltagskommunikation"> Alltagskommunikation im Betrieb</label>
+      <label><input type="checkbox" value="Gesprächsführung"> Gesprächsführung und Umgangston</label>
+      <label><input type="checkbox" value="Telefon"> Telefongespräche</label>
+      <label><input type="checkbox" value="Schriftliche Mitteilungen"> Schriftliche Mitteilungen (Chat, Mail, Formulare)</label>
+      <label><input type="checkbox" value="Aussprache"> Ausspracheverbesserung</label>
+      <label><input type="checkbox" value="Probleme beschreiben"> Probleme/Arbeitsaufträge beschreiben</label>
+    </div>
+
+    <label for="brancheSelect">Branchenspezifische Ziele <br> Branche wählen</label>
+    <select id="brancheSelect">
+      <option value="">Bitte auswählen</option>
+      <option value="pflege">Pflege</option>
+      <option value="gastronomie">Gastronomie</option>
+      <option value="logistik">Logistik</option>
+      <option value="andere">Andere Branche (bitte eingeben)</option>
+    </select>
+
+    <div id="brancheEingabe" style="display:none; margin-top:10px;">
+      <label for="brancheText">Andere Branche</label>
+      <input type="text" id="brancheText" placeholder="Branche eingeben">
+    </div>
+
+    <div id="zusatzfragenContainer" style="display:none; margin-top:20px;">
+
+      <div id="fragen-pflege" class="zusatzfragen" style="display:none;">
+        <label>Pflegebezogene Ziele</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Pflegedokumentation"> Pflegedokumentation verstehen</label>
+          <label><input type="checkbox" value="Gespräch Patientinnen"> Gespräche mit Patientinnen</label>
+          <label><input type="checkbox" value="Medizinischer Wortschatz"> Medizinischer Wortschatz</label>
+        </div>
+      </div>
+
+      <div id="fragen-gastronomie" class="zusatzfragen" style="display:none;">
+        <label>Ziele in der Gastronomie</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Speisekarte erklären"> Speisekarte erklären</label>
+          <label><input type="checkbox" value="Bestellungen aufnehmen"> Bestellungen aufnehmen</label>
+          <label><input type="checkbox" value="Kundengespräche"> Kundengespräche im Service</label>
+        </div>
+      </div>
+
+      <div id="fragen-logistik" class="zusatzfragen" style="display:none;">
+        <label>Ziele in der Logistik</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Lieferscheine verstehen"> Lieferscheine verstehen</label>
+          <label><input type="checkbox" value="Sicherheitsanweisungen"> Sicherheitsanweisungen verstehen</label>
+          <label><input type="checkbox" value="Warenbeschreibungen"> Warenbeschreibungen und Etiketten</label>
+        </div>
+      </div>
+
+      <div id="fragen-allgemein" class="zusatzfragen" style="display:none;">
+        <label>Allgemeine arbeitsbezogene Ziele</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Fachgespräche"> Fachgespräche im Team</label>
+          <label><input type="checkbox" value="Einarbeitung"> Einarbeitung neuer Aufgaben</label>
+        </div>
+      </div>
+    </div>
+
+    <label for="weitereZiele">Weitere individuelle Ziele</label>
+    <textarea id="weitereZiele" rows="3"></textarea>
+
+ 
+
+    <label for="kontakt">Kontaktperson (Name, E-Mail, Telefon)</label>
+    <textarea id="kontakt" rows="3" required></textarea>
+
+    <button type="submit">Absenden</button>
+
+  </form>
+
+  <div id="feedback"></div>
+
+<script>
+document.getElementById("brancheSelect").addEventListener("change", function() {
+  const branche = this.value;
+  document.getElementById("brancheEingabe").style.display = branche === "andere" ? "block" : "none";
+
+  const container = document.getElementById("zusatzfragenContainer");
+  container.style.display = branche ? "block" : "none";
+
+  document.querySelectorAll(".zusatzfragen").forEach(el => el.style.display = "none");
+
+  if(branche === "pflege") document.getElementById("fragen-pflege").style.display = "block";
+  if(branche === "gastronomie") document.getElementById("fragen-gastronomie").style.display = "block";
+  if(branche === "logistik") document.getElementById("fragen-logistik").style.display = "block";
+  if(branche === "andere") document.getElementById("fragen-allgemein").style.display = "block";
+});
+
+document.getElementById("bedarfForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("feedback").innerHTML = `
+    <div class="success">Vielen Dank! Ihre Anfrage wurde erfasst. Wir melden uns in Kürze, um die nächsten Schritte gemeinsam zu planen.</div>
+  `;
+  document.getElementById("bedarfForm").reset();
+});
+</script>
+
+</body>
+</html>
