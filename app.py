@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
@@ -11,6 +11,20 @@ EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
 EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 
+# Startseite ausliefern
+@app.route("/")
+def home():
+    return send_from_directory(".", "index.html")
+
+# Alle anderen Dateien liefern (HTML, CSS, JS, Bilder, etc.)
+@app.route("/<path:filename>")
+def serve_files(filename):
+    try:
+        return send_from_directory(".", filename)
+    except:
+        return "404 Datei nicht gefunden", 404
+
+# Formular-Daten empfangen und E-Mail senden
 @app.route("/submit", methods=["POST"])
 def submit_form():
     data = request.json
@@ -36,16 +50,4 @@ def submit_form():
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
-
-
-
-
-app = Flask(__name__)
-CORS(app)
-
-@app.route("/", methods=["GET"])
-def index():
-    return render_template("bedarfsfeststellung.html")
-
-
+    app.run(host="0.0.0.0", port=10000)
