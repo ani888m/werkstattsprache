@@ -16,7 +16,7 @@ EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 def home():
     return send_from_directory(".", "index.html")
 
-# Alle anderen Dateien liefern (HTML, CSS, JS, Bilder, etc.)
+# Alle anderen Dateien ausliefern
 @app.route("/<path:filename>")
 def serve_files(filename):
     try:
@@ -24,7 +24,7 @@ def serve_files(filename):
     except:
         return "404 Datei nicht gefunden", 404
 
-# Formular-Daten empfangen und E-Mail senden
+# Formular per E-Mail senden
 @app.route("/submit", methods=["POST"])
 def submit_form():
     data = request.json
