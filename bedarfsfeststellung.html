@@ -9,6 +9,10 @@
       max-width: 700px;
       margin: 20px auto;
       line-height: 1.5;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #0077cc;
     }
     label {
       font-weight: bold;
@@ -21,6 +25,7 @@
       margin-top: 5px;
       border: 1px solid #bbb;
       border-radius: 4px;
+      box-sizing: border-box;
     }
     .checkbox-group {
       display: flex;
@@ -64,153 +69,156 @@
 </head>
 
 <body>
-  <h1>Bedarfsfeststellung für digitales Fach- und Sprachlernen</h1>
-  <p>Bitte beantworten Sie die folgenden Fragen, damit wir ein passendes Lernangebot entwickeln können.</p>
 
-  <form id="bedarfForm">
+<h1>Bedarfsfeststellung für digitales Fach- und Sprachlernen</h1>
+<p>Bitte beantworten Sie die folgenden Fragen, damit wir ein passendes Lernangebot entwickeln können.</p>
 
-    <label for="unternehmen">Name des Betriebs/Unternehmens</label>
-    <input type="text" id="unternehmen" name="unternehmen" required>
+<form id="bedarfForm">
+  <label for="unternehmen">Name des Betriebs/Unternehmens</label>
+  <input type="text" id="unternehmen" name="unternehmen" required>
 
-    <label for="anzahl">Anzahl der Mitarbeitenden</label>
-    <input type="number" id="anzahl" name="anzahl" min="1" required>
+  <label for="anzahl">Anzahl der Mitarbeitenden</label>
+  <input type="number" id="anzahl" name="anzahl" min="1" required>
 
-    <label for="sprachniveau">Sprachniveaus der Mitarbeitenden</label>
-    <select id="sprachniveau" name="sprachniveau">
-      <option>A1</option>
-      <option>A2</option>
-      <option>B1</option>
-      <option>B2</option>
-      <option>C1 oder höher</option>
-      <option>gemischt / unklar</option>
-    </select>
+  <label for="sprachniveau">Sprachniveaus der Mitarbeitenden</label>
+  <select id="sprachniveau" name="sprachniveau">
+    <option>A1</option>
+    <option>A2</option>
+    <option>B1</option>
+    <option>B2</option>
+    <option>C1 oder höher</option>
+    <option>gemischt / unklar</option>
+  </select>
 
-    <label>Fachliche Ziele (Mehrfachauswahl möglich)</label>
-    <div class="checkbox-group">
-      <label><input type="checkbox" name="fachlicheZiele" value="Fachwortschatz erweitern"> Fachwortschatz erweitern</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Abläufe und Prozesse verstehen"> Abläufe und Prozesse verstehen</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Arbeitssicherheit"> Arbeitssicherheit und Unterweisungen</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Schulungen"> Teilnahme an fachlichen Schulungen</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Dokumentation"> Dokumentationen/Berichte verstehen</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Kommunikation Vorgesetzte"> Kommunikation mit Vorgesetzten/Kolleginnen</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Kundenkontakt"> Kundenkontakt</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Digitale Systeme"> Nutzung digitaler Systeme</label>
-      <label><input type="checkbox" name="fachlicheZiele" value="Qualifizierungen"> Unterstützung bei Prüfungen/Qualifizierungen</label>
-    </div>
+  <label>Fachliche Ziele</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="fachlicheZiele" value="Fachwortschatz erweitern"> Fachwortschatz erweitern</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Abläufe und Prozesse verstehen"> Abläufe und Prozesse verstehen</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Arbeitssicherheit"> Arbeitssicherheit</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Schulungen"> Teilnahme an fachlichen Schulungen</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Dokumentation"> Dokumentationen/Berichte verstehen</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Kommunikation Vorgesetzte"> Kommunikation Vorgesetzte/Kolleginnen</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Kundenkontakt"> Kundenkontakt</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Digitale Systeme"> Nutzung digitaler Systeme</label>
+    <label><input type="checkbox" name="fachlicheZiele" value="Qualifizierungen"> Unterstützung bei Prüfungen/Qualifizierungen</label>
+  </div>
 
-    <label>Kommunikative Ziele (Mehrfachauswahl möglich)</label>
-    <div class="checkbox-group">
-      <label><input type="checkbox" name="kommunikativeZiele" value="Alltagskommunikation"> Alltagskommunikation im Betrieb</label>
-      <label><input type="checkbox" name="kommunikativeZiele" value="Gesprächsführung"> Gesprächsführung und Umgangston</label>
-      <label><input type="checkbox" name="kommunikativeZiele" value="Telefon"> Telefongespräche</label>
-      <label><input type="checkbox" name="kommunikativeZiele" value="Schriftliche Mitteilungen"> Schriftliche Mitteilungen (Chat, Mail, Formulare)</label>
-      <label><input type="checkbox" name="kommunikativeZiele" value="Aussprache"> Ausspracheverbesserung</label>
-      <label><input type="checkbox" name="kommunikativeZiele" value="Probleme beschreiben"> Probleme/Arbeitsaufträge beschreiben</label>
-    </div>
+  <label>Kommunikative Ziele</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="kommunikativeZiele" value="Alltagskommunikation"> Alltagskommunikation im Betrieb</label>
+    <label><input type="checkbox" name="kommunikativeZiele" value="Gesprächsführung"> Gesprächsführung</label>
+    <label><input type="checkbox" name="kommunikativeZiele" value="Telefon"> Telefongespräche</label>
+    <label><input type="checkbox" name="kommunikativeZiele" value="Schriftliche Mitteilungen"> Schriftliche Mitteilungen</label>
+    <label><input type="checkbox" name="kommunikativeZiele" value="Aussprache"> Ausspracheverbesserung</label>
+    <label><input type="checkbox" name="kommunikativeZiele" value="Probleme beschreiben"> Probleme/Arbeitsaufträge beschreiben</label>
+  </div>
 
-    <label for="brancheSelect">Branchenspezifische Ziele</label>
-    <select id="brancheSelect" name="branche">
-      <option value="">Bitte auswählen</option>
-      <option value="pflege">Pflege</option>
-      <option value="gastronomie">Gastronomie</option>
-      <option value="logistik">Logistik</option>
-      <option value="andere">Andere Branche</option>
-    </select>
+  <label for="brancheSelect">Branchenspezifische Ziele</label>
+  <select id="brancheSelect" name="branche">
+    <option value="">Bitte auswählen</option>
+    <option value="pflege">Pflege</option>
+    <option value="gastronomie">Gastronomie</option>
+    <option value="logistik">Logistik</option>
+    <option value="andere">Andere Branche</option>
+  </select>
 
-    <div id="brancheEingabe" style="display:none; margin-top:10px;">
-      <label for="brancheText">Andere Branche</label>
-      <input type="text" id="brancheText" name="brancheAndere" placeholder="Branche eingeben">
-    </div>
+  <div id="brancheEingabe" style="display:none; margin-top:10px;">
+    <label for="brancheText">Andere Branche</label>
+    <input type="text" id="brancheText" name="andereBranche" placeholder="Branche eingeben">
+  </div>
 
-    <div id="zusatzfragenContainer" style="display:none; margin-top:20px;">
-
-      <div id="fragen-pflege" class="zusatzfragen" style="display:none;">
-        <label>Pflegebezogene Ziele</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="zusatzfragen" value="Pflegedokumentation"> Pflegedokumentation verstehen</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Gespräch Patientinnen"> Gespräche mit Patientinnen</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Medizinischer Wortschatz"> Medizinischer Wortschatz</label>
-        </div>
+  <div id="zusatzfragenContainer" style="display:none; margin-top:20px;">
+    <div id="fragen-pflege" class="zusatzfragen" style="display:none;">
+      <label>Pflegebezogene Ziele</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="pflegeZiele" value="Pflegedokumentation"> Pflegedokumentation</label>
+        <label><input type="checkbox" name="pflegeZiele" value="Gespräch Patientinnen"> Gespräche mit Patientinnen</label>
+        <label><input type="checkbox" name="pflegeZiele" value="Medizinischer Wortschatz"> Medizinischer Wortschatz</label>
       </div>
-
-      <div id="fragen-gastronomie" class="zusatzfragen" style="display:none;">
-        <label>Ziele in der Gastronomie</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="zusatzfragen" value="Speisekarte erklären"> Speisekarte erklären</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Bestellungen aufnehmen"> Bestellungen aufnehmen</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Kundengespräche"> Kundengespräche im Service</label>
-        </div>
-      </div>
-
-      <div id="fragen-logistik" class="zusatzfragen" style="display:none;">
-        <label>Ziele in der Logistik</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="zusatzfragen" value="Lieferscheine verstehen"> Lieferscheine verstehen</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Sicherheitsanweisungen"> Sicherheitsanweisungen verstehen</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Warenbeschreibungen"> Warenbeschreibungen und Etiketten</label>
-        </div>
-      </div>
-
-      <div id="fragen-allgemein" class="zusatzfragen" style="display:none;">
-        <label>Allgemeine arbeitsbezogene Ziele</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="zusatzfragen" value="Fachgespräche"> Fachgespräche im Team</label>
-          <label><input type="checkbox" name="zusatzfragen" value="Einarbeitung"> Einarbeitung neuer Aufgaben</label>
-        </div>
-      </div>
-
     </div>
+    <div id="fragen-gastronomie" class="zusatzfragen" style="display:none;">
+      <label>Ziele in der Gastronomie</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="gastronomieZiele" value="Speisekarte erklären"> Speisekarte erklären</label>
+        <label><input type="checkbox" name="gastronomieZiele" value="Bestellungen aufnehmen"> Bestellungen aufnehmen</label>
+        <label><input type="checkbox" name="gastronomieZiele" value="Kundengespräche"> Kundengespräche</label>
+      </div>
+    </div>
+    <div id="fragen-logistik" class="zusatzfragen" style="display:none;">
+      <label>Ziele in der Logistik</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="logistikZiele" value="Lieferscheine verstehen"> Lieferscheine verstehen</label>
+        <label><input type="checkbox" name="logistikZiele" value="Sicherheitsanweisungen"> Sicherheitsanweisungen</label>
+        <label><input type="checkbox" name="logistikZiele" value="Warenbeschreibungen"> Warenbeschreibungen</label>
+      </div>
+    </div>
+    <div id="fragen-allgemein" class="zusatzfragen" style="display:none;">
+      <label>Allgemeine arbeitsbezogene Ziele</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="allgemeinZiele" value="Fachgespräche"> Fachgespräche</label>
+        <label><input type="checkbox" name="allgemeinZiele" value="Einarbeitung"> Einarbeitung neuer Aufgaben</label>
+      </div>
+    </div>
+  </div>
 
-    <label for="weitereZiele">Weitere individuelle Ziele</label>
-    <textarea id="weitereZiele" name="weitereZiele" rows="3"></textarea>
+  <label for="weitereZiele">Weitere individuelle Ziele</label>
+  <textarea id="weitereZiele" name="weitereZiele" rows="3"></textarea>
 
-    <label for="kontakt">Kontaktperson (Name, E-Mail, Telefon)</label>
-    <textarea id="kontakt" name="kontakt" rows="3" required></textarea>
+  <label for="kontakt">Kontaktperson (Name, E-Mail, Telefon)</label>
+  <textarea id="kontakt" name="kontakt" rows="3" required></textarea>
 
-    <button type="submit">Absenden</button>
-  </form>
+  <button type="submit">Absenden</button>
+</form>
 
-  <div id="feedback"></div>
-
+<div id="feedback"></div>
 <script>
-document.getElementById("brancheSelect").addEventListener("change", function() {
-  const branche = this.value;
+const brancheSelect = document.getElementById("brancheSelect");
+
+brancheSelect.addEventListener("change", () => {
+  const branche = brancheSelect.value;
   document.getElementById("brancheEingabe").style.display = branche === "andere" ? "block" : "none";
+
   const container = document.getElementById("zusatzfragenContainer");
   container.style.display = branche ? "block" : "none";
+
   document.querySelectorAll(".zusatzfragen").forEach(el => el.style.display = "none");
+
   if(branche === "pflege") document.getElementById("fragen-pflege").style.display = "block";
   if(branche === "gastronomie") document.getElementById("fragen-gastronomie").style.display = "block";
   if(branche === "logistik") document.getElementById("fragen-logistik").style.display = "block";
   if(branche === "andere") document.getElementById("fragen-allgemein").style.display = "block";
 });
 
-document.getElementById("bedarfForm").addEventListener("submit", async function(event) {
+document.getElementById("bedarfForm").addEventListener("submit", async function(event){
   event.preventDefault();
+
   const formData = new FormData(this);
   const jsonData = {};
+
   formData.forEach((value, key) => {
-    if (jsonData[key]) {
-      if (!Array.isArray(jsonData[key])) jsonData[key] = [jsonData[key]];
+    if(jsonData[key]){
+      if(!Array.isArray(jsonData[key])) jsonData[key] = [jsonData[key]];
       jsonData[key].push(value);
     } else {
       jsonData[key] = value;
     }
   });
-  try {
-    const response = await fetch("https://deine-render-url.onrender.com/submit", {
+
+  try{
+    const response = await fetch("/submit", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(jsonData)
     });
+
     const result = await response.json();
+
     document.getElementById("feedback").innerHTML = `<div class="success">${result.message}</div>`;
     this.reset();
-  } catch (err) {
-    document.getElementById("feedback").innerHTML = `<div class="success">Fehler beim Senden. Bitte versuchen Sie es später.</div>`;
+  }catch(e){
+    document.getElementById("feedback").innerHTML = `<div class="success">Fehler beim Absenden. Bitte versuchen Sie es erneut.</div>`;
+    console.error(e);
   }
 });
 </script>
 
-</body>
-</html>
