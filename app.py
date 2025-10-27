@@ -39,7 +39,13 @@ if __name__ == "__main__":
     app.run(port=5000)
 
 
+
+
+app = Flask(__name__)
+CORS(app)
+
 @app.route("/", methods=["GET"])
-def home():
-    return "Backend läuft! Bitte das Formular nutzen."
+def index():
+    return render_template("bedarfsfeststellung.html")
+
 
