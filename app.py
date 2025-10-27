@@ -14,7 +14,7 @@ EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 # Startseite ausliefern
 @app.route("/")
 def home():
-    return send_from_directory(".", "index.html")
+    return send_from_directory(".", "bedarfsfeststellung.html")  # <- hier angepasst
 
 # Alle anderen Dateien ausliefern
 @app.route("/<path:filename>")
@@ -28,7 +28,6 @@ def serve_files(filename):
 @app.route("/submit", methods=["POST"])
 def submit_form():
     data = request.json
-
     text = "Neue Anfrage eingegangen:\n\n"
     for key, value in data.items():
         text += f"{key}: {value}\n"
@@ -47,7 +46,6 @@ def submit_form():
         return jsonify({"message": "Fehler beim Senden"}), 500
 
     return jsonify({"message": "E-Mail wurde erfolgreich gesendet!"}), 200
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
