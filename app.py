@@ -1,16 +1,17 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-import smtplib
-from email.mime.text import MIMEText
 import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 CORS(app)
 
-# Env-Variablen (müssen auf Render gesetzt werden)
+# Environment Variables auf Render setzen:
+# EMAIL_USER, EMAIL_RECEIVER, SENDGRID_API_KEY
 EMAIL_USER = os.getenv("EMAIL_USER")
-EMAIL_PASS = os.getenv("EMAIL_PASS")
 EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 
 # Startseite ausliefern
 @app.route("/")
@@ -32,20 +33,18 @@ def submit_form():
     # Text zusammenbauen
     text = "Neue Anfrage eingegangen:\n\n" + "\n".join(f"{k}: {v}" for k, v in data.items())
 
-    msg = MIMEText(text)
-    msg["Subject"] = "Neue Bedarfsfeststellung"
-    msg["From"] = EMAIL_USER
-    msg["To"] = EMAIL_RECEIVER
+    # SendGrid-Mail erzeugen
+    message = Mail(
+        from_email=EMAIL_USER,
+        to_emails=EMAIL_RECEIVER,
+        subject="Neue Bedarfsfeststellung",
+        plain_text_content=text
+    )
 
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.set_debuglevel(1)  # Debugging aktivieren
-            server.login(EMAIL_USER, EMAIL_PASS)
-            server.sendmail(EMAIL_USER, EMAIL_RECEIVER, msg.as_string())
-            print("E-Mail erfolgreich gesendet!")
-    except smtplib.SMTPAuthenticationError as e:
-        print("SMTP Auth Error:", e)
-        return jsonify({"message": "SMTP Auth Error", "error": str(e)}), 500
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
+        print(f"E-Mail gesendet, Status: {response.status_code}")
     except Exception as e:
         print("Fehler beim Senden:", e)
         return jsonify({"message": "Fehler beim Senden", "error": str(e)}), 500
