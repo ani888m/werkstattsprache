@@ -14,6 +14,10 @@ EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 # Startseite ausliefern
 @app.route("/")
 def home():
+    return send_from_directory(".", "index.html")  # <- hier angepasst
+
+@app.route("/bedarfsfeststellung")
+def bedarfsfeststllung():
     return send_from_directory(".", "bedarfsfeststellung.html")  # <- hier angepasst
 
 # Alle anderen Dateien ausliefern
