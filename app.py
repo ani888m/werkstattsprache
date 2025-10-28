@@ -7,6 +7,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+# Env-Variablen (müssen auf Render gesetzt werden)
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
 EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
@@ -25,9 +26,11 @@ def form_page():
 @app.route("/submit", methods=["POST"])
 def submit_form():
     data = request.json
-    text = "Neue Anfrage eingegangen:\n\n"
-    for key, value in data.items():
-        text += f"{key}: {value}\n"
+    if not data:
+        return jsonify({"message": "Keine Daten empfangen"}), 400
+
+    # Text zusammenbauen
+    text = "Neue Anfrage eingegangen:\n\n" + "\n".join(f"{k}: {v}" for k, v in data.items())
 
     msg = MIMEText(text)
     msg["Subject"] = "Neue Bedarfsfeststellung"
@@ -36,11 +39,16 @@ def submit_form():
 
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.set_debuglevel(1)  # Debugging aktivieren
             server.login(EMAIL_USER, EMAIL_PASS)
             server.sendmail(EMAIL_USER, EMAIL_RECEIVER, msg.as_string())
+            print("E-Mail erfolgreich gesendet!")
+    except smtplib.SMTPAuthenticationError as e:
+        print("SMTP Auth Error:", e)
+        return jsonify({"message": "SMTP Auth Error", "error": str(e)}), 500
     except Exception as e:
         print("Fehler beim Senden:", e)
-        return jsonify({"message": "Fehler beim Senden"}), 500
+        return jsonify({"message": "Fehler beim Senden", "error": str(e)}), 500
 
     return jsonify({"message": "E-Mail wurde erfolgreich gesendet!"}), 200
 
