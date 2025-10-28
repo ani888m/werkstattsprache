@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
@@ -14,19 +14,12 @@ EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 # Startseite ausliefern
 @app.route("/")
 def home():
-    return send_from_directory(".", "index.html")  # <- hier angepasst
+    return render_template("index.html")
 
+# Unterseite Bedarfsfeststellung
 @app.route("/bedarfsfeststellung")
-def bedarfsfeststllung():
-    return send_from_directory(".", "bedarfsfeststellung.html")  # <- hier angepasst
-
-# Alle anderen Dateien ausliefern
-@app.route("/<path:filename>")
-def serve_files(filename):
-    try:
-        return send_from_directory(".", filename)
-    except:
-        return "404 Datei nicht gefunden", 404
+def form_page():
+    return render_template("bedarfsfeststellung.html")
 
 # Formular per E-Mail senden
 @app.route("/submit", methods=["POST"])
