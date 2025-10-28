@@ -20,7 +20,7 @@ const data = [
 
 let deviceType = "";
 let initialX = 0, initialY = 0;
-let currentElement = "";
+let currentElement = null;
 let moveElement = false;
 let count = 0;
 
@@ -42,6 +42,7 @@ const randomWords = () => {
   return shuffled.slice(0, 3);
 };
 
+// Spiel stoppen
 const stopGame = () => {
   controls.classList.remove("hide");
   startButton.classList.remove("hide");
@@ -59,6 +60,7 @@ function dragStart(e) {
   }
 }
 
+// Drag-Over für Drop
 function dragOver(e) {
   e.preventDefault();
 }
@@ -69,7 +71,7 @@ const touchMove = (e) => {
     e.preventDefault();
     let newX = e.touches[0].clientX;
     let newY = e.touches[0].clientY;
-    let el = document.getElementById(e.target.id);
+    const el = currentElement;
     if (el && el.parentElement) {
       el.parentElement.style.top =
         el.parentElement.offsetTop - (initialY - newY) + "px";
@@ -105,7 +107,7 @@ const drop = (e) => {
         dropArticle = dropTarget.getAttribute("data-article");
         if (draggedArticle === dropArticle) {
           currentElement.classList.add("hide");
-          dropTarget.innerHTML = `<img src="${draggedArticle}.png">`;
+          dropTarget.innerHTML = `<img src="static/images/${draggedArticle}.png">`;
           dropTarget.classList.add("dropped");
           count++;
         }
@@ -125,7 +127,7 @@ const drop = (e) => {
     ) {
       draggedElement.classList.add("hide");
       draggedElement.setAttribute("draggable", "false");
-      e.target.innerHTML = `<img src="${draggedArticle}.png">`;
+      e.target.innerHTML = `<img src="static/images/${draggedArticle}.png">`;
       e.target.classList.add("dropped");
       count++;
     }
@@ -143,14 +145,14 @@ const creator = () => {
   dropContainer.innerHTML = "";
   const selectedWords = randomWords();
 
-  // Draggable (Artikel)
+  // Draggable-Objekte
   selectedWords.forEach((item, index) => {
     const dragDiv = document.createElement("div");
     dragDiv.classList.add("draggable-image");
     dragDiv.setAttribute("draggable", true);
     dragDiv.setAttribute("data-article", item.article);
     if (isTouchDevice()) dragDiv.style.position = "absolute";
-    dragDiv.innerHTML = `<img src="${item.article}.png" id="${item.article}-${index}">`;
+    dragDiv.innerHTML = `<img src="static/images/${item.article}.png" id="${item.article}-${index}">`;
     dragContainer.appendChild(dragDiv);
   });
 
@@ -163,11 +165,11 @@ const creator = () => {
   });
 };
 
-// Start
+// Start des Spiels
 startButton.addEventListener(
   "click",
-  (startGame = async () => {
-    currentElement = "";
+  async () => {
+    currentElement = null;
     controls.classList.add("hide");
     startButton.classList.add("hide");
     await creator();
@@ -186,5 +188,5 @@ startButton.addEventListener(
       el.addEventListener("dragover", dragOver);
       el.addEventListener("drop", drop);
     });
-  })
+  }
 );
