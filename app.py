@@ -24,7 +24,7 @@ def form_page():
     return render_template("bedarfsfeststellung.html")
 
 @app.route("/Sprachlernspiele")
-def form_page():
+def sprachlernspiele_page():
     return render_template("Sprachlernspiele.html")
 
 # Formular per E-Mail senden
