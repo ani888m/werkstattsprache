@@ -386,6 +386,12 @@ textarea {
 .show-medium {
   display: none;
 }
+.services .center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 
 @media screen and (max-width: 1200px) {
   .services.container,
