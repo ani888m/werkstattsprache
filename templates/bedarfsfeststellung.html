@@ -65,6 +65,71 @@
     .zusatzfragen {
       margin-top: 10px;
     }
+
+     /* 🌐 MOBILE OPTIMIERUNG */
+    @media (max-width: 768px) {
+      body {
+        max-width: 100%;
+        margin: 0;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+      }
+
+      label {
+        font-size: 0.95rem;
+        margin-top: 12px;
+      }
+
+      input, select, textarea {
+        font-size: 1rem;
+        padding: 10px;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .checkbox-group label {
+        font-size: 0.95rem;
+      }
+
+      .checkbox-group {
+        gap: 4px;
+      }
+
+      .success {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* 📱 SEHR KLEINE BILDSCHIRME */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 0.95rem;
+      }
+
+      input, select, textarea {
+        font-size: 0.9rem;
+      }
+
+      .checkbox-group label {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 
