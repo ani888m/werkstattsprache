@@ -28,7 +28,7 @@ def sprachlernspiele_page():
     return render_template("Sprachlernspiele.html")
 
 @app.route("/haengemann")
-def haengemann ():
+def haengemann():
     return render_template("haengemann.html")
 
 @app.route("/Artikelzuordnungsspiel")
