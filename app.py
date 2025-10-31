@@ -27,6 +27,14 @@ def form_page():
 def sprachlernspiele_page():
     return render_template("Sprachlernspiele.html")
 
+@app.route("/haengemann")
+def haengemann ():
+    return render_template("haengemann.html")
+
+@app.route("/Artikelzuordnungsspiel")
+def Artikelzuordnungsspiel():
+    return render_template("Artikelzuordnungsspiel.html")
+
 # Formular per E-Mail senden
 @app.route("/submit", methods=["POST"])
 def submit_form():
