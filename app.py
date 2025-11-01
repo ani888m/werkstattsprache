@@ -35,7 +35,7 @@ def haengemann():
 def Artikelzuordnungsspiel():
     return render_template("Artikelzuordnungsspiel.html")
     
-@app.route("memory/index")
+@app.route("/memory/index")
 def memory():
     return render_template("memory/index.html")
 
