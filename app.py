@@ -34,6 +34,11 @@ def haengemann():
 @app.route("/Artikelzuordnungsspiel")
 def Artikelzuordnungsspiel():
     return render_template("Artikelzuordnungsspiel.html")
+    
+@app.route("memory/index")
+def memory():
+    return render_template("memory/index.html")
+
 
 # Formular per E-Mail senden
 @app.route("/submit", methods=["POST"])
